@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bonusnacht</title>
+<meta name="description" content="Casino-Boni lizenzierter Anbieter im Vergleich: Umsatzbedingungen, Auszahlungsdauer und Freispiele auf einen Blick.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="disclosure" role="note">
+  <span class="pill">Anzeige</span>
+  <span>Diese Seite enthält Affiliate-Links. Für Anmeldungen über diese Links erhalten wir eine Provision. Dein Bonus ändert sich dadurch nicht.</span>
+  <span class="pill age">18+</span>
+</div>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="#start" aria-label="Bonusnacht Startseite">
+      <span class="brand-mark" aria-hidden="true">★</span><span class="brand-name">Bonusnacht</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#vergleich">Vergleich</a>
+      <a href="#rechner">Bonus-Rechner</a>
+      <a href="#methode">So prüfen wir</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-gold btn-sm" id="header-cta" href="#vergleich">Top-Bonus</a>
+  </div>
+</header>
+
+<main id="start">
+  <div class="demo-banner" id="demo-banner" hidden>
+    <div class="wrap">Beispieldaten: Die Casinos auf dieser Seite sind Platzhalter. Trage deine Partner in <code>data/casinos.js</code> ein und setze <code>beispieldaten: false</code>.</div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Stand <span data-site="stand"></span> · <span data-count></span> lizenzierte Anbieter</p>
+        <h1>Casino-Boni, <em>ehrlich</em> durchgerechnet.</h1>
+        <p class="lede">Wir vergleichen Willkommensboni nach dem, was wirklich zählt: Umsatzbedingungen, Auszahlungsdauer und Lizenz. Dreh die Walze oder spring direkt zum Vergleich.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#vergleich">Zum Vergleich</a>
+          <a class="btn btn-ghost" href="#rechner">Bonus durchrechnen</a>
+        </div>
+        <ul class="hero-facts">
+          <li><strong>1 €</strong><span>max. Einsatz je Spin bei deutschen Slots</span></li>
+          <li><strong>5 s</strong><span>Mindestdauer pro Spin</span></li>
+          <li><strong>1.000 €</strong><span>Einzahlungslimit im Monat</span></li>
+        </ul>
+      </div>
+
+      <div class="reel-machine" aria-label="Bonus-Walze">
+        <div class="bulbs bulbs-top" aria-hidden="true"></div>
+        <div class="reel-head">
+          <span>Bonus-Walze</span>
+          <span class="reel-sub">Zufälliges Angebot</span>
+        </div>
+        <div class="reel-window">
+          <div class="reel-strip" id="reel-strip"></div>
+          <div class="reel-line" aria-hidden="true"></div>
+        </div>
+        <div class="reel-foot">
+          <button class="btn btn-ruby" id="reel-spin" type="button">Walze drehen</button>
+          <a class="btn btn-gold" id="reel-cta" href="#" target="_blank" rel="sponsored nofollow noopener">Zum Angebot</a>
+        </div>
+        <p class="reel-result" id="reel-result" aria-live="polite"></p>
+        <div class="bulbs bulbs-bottom" aria-hidden="true"></div>
+      </div>
+    </div>
+    <canvas class="hero-fx" id="hero-fx" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- TOP 3 -->
+  <section class="section" aria-labelledby="top-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="top-h">Die Top 3 im <span data-site="stand"></span></h2>
+        <p>Nach unserer Gesamtwertung aus Bonusbedingungen, Auszahlung und Service.</p>
+      </div>
+      <div class="podium" id="podium"></div>
+    </div>
+  </section>
+
+  <!-- VERGLEICH -->
+  <section class="section" id="vergleich" aria-labelledby="cmp-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="cmp-h">Alle Angebote im Vergleich</h2>
+        <p>Filtere nach deinen Prioritäten. Ein Klick auf „Details“ zeigt Vor- und Nachteile sowie die Kurz-AGB.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Filter">
+          <button type="button" class="fchip" data-filter="alle" aria-pressed="true">Alle</button>
+          <button type="button" class="fchip" data-filter="freispiele" aria-pressed="false">Mit Freispielen</button>
+          <button type="button" class="fchip" data-filter="umsatz" aria-pressed="false">Umsatz ≤ 30×</button>
+          <button type="button" class="fchip" data-filter="schnell" aria-pressed="false">Auszahlung ≤ 12 h</button>
+          <button type="button" class="fchip" data-filter="paypal" aria-pressed="false">PayPal</button>
+        </div>
+        <label class="sort">
+          <span>Sortieren</span>
+          <select id="sort">
+            <option value="bewertung">Gesamtwertung</option>
+            <option value="max">Höchster Bonus</option>
+            <option value="umsatz">Niedrigster Umsatz</option>
+            <option value="auszahlung">Schnellste Auszahlung</option>
+          </select>
+        </label>
+      </div>
+
+      <ol class="list" id="list"></ol>
+      <p class="empty" id="empty" hidden>Kein Angebot passt zu diesem Filter. Wähle „Alle“, um wieder alle Casinos zu sehen.</p>
+    </div>
+  </section>
+
+  <!-- RECHNER -->
+  <section class="section" id="rechner" aria-labelledby="calc-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="calc-h">Bonus-Rechner</h2>
+        <p>Wie viel musst du umsetzen, bevor der Bonus auszahlbar ist? Wähle ein Angebot oder trage eigene Werte ein.</p>
+      </div>
+
+      <div class="calc">
+        <form class="calc-form" id="calc-form">
+          <label class="field field-wide">
+            <span>Angebot</span>
+            <select id="c-casino"></select>
+          </label>
+          <label class="field field-wide">
+            <span>Einzahlung <output id="c-dep-out">50 €</output></span>
+            <input id="c-dep" type="range" min="10" max="500" step="5" value="50">
+          </label>
+          <label class="field">
+            <span>Bonus in %</span>
+            <input id="c-pct" type="number" min="0" max="500" step="5" value="100" inputmode="numeric">
+          </label>
+          <label class="field">
+            <span>Max. Bonus (€)</span>
+            <input id="c-max" type="number" min="0" step="10" value="100" inputmode="numeric">
+          </label>
+          <label class="field">
+            <span>Umsatz (×)</span>
+            <input id="c-wr" type="number" min="0" max="100" step="1" value="30" inputmode="numeric">
+          </label>
+          <label class="field">
+            <span>Umsatz gilt für</span>
+            <select id="c-on">
+              <option value="bonus">nur Bonus</option>
+              <option value="beides">Einzahlung + Bonus</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="calc-out" aria-live="polite">
+          <div class="kpis">
+            <div class="kpi"><span>Bonus</span><strong id="o-bonus">0 €</strong></div>
+            <div class="kpi"><span>Startguthaben</span><strong id="o-total">0 €</strong></div>
+            <div class="kpi kpi-main"><span>Nötiger Umsatz</span><strong id="o-turn">0 €</strong></div>
+          </div>
+          <div class="meter" aria-hidden="true"><div class="meter-fill" id="o-bar"></div></div>
+          <p class="calc-note" id="o-note"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODE -->
+  <section class="section" id="methode" aria-labelledby="m-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="m-h">So prüfen wir die Anbieter</h2>
+        <p>Die Reihenfolge entspricht unserer Gewichtung in der Gesamtwertung.</p>
+      </div>
+      <ol class="method">
+        <li><h3>Lizenz</h3><p>Wir listen nur Anbieter mit deutscher Erlaubnis der Gemeinsamen Glücksspielbehörde der Länder (GGL). Ohne Eintrag auf der amtlichen Whitelist ist ein Casino für uns raus.</p></li>
+        <li><h3>Bonusbedingungen</h3><p>Umsatzfaktor, Laufzeit und ob der Umsatz nur auf den Bonus oder auch auf die Einzahlung gilt. Das entscheidet mehr über den Wert als die Höhe.</p></li>
+        <li><h3>Auszahlung</h3><p>Wir zahlen echte Gewinne aus und messen die Zeit bis zum Zahlungseingang, getrennt nach PayPal, Karte und Sofortüberweisung.</p></li>
+        <li><h3>Service und Spielerschutz</h3><p>Erreichbarkeit des Supports auf Deutsch, Einstellbarkeit von Limits und wie leicht man sich selbst sperren kann.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-h">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2 id="faq-h">Häufige Fragen</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Was bedeutet „35× Umsatz“?</summary>
+          <p>Du musst den Bonusbetrag 35-mal einsetzen, bevor du ihn und daraus entstandene Gewinne auszahlen kannst. Bei 100 € Bonus sind das 3.500 € Einsatz. Gilt der Umsatz auf Einzahlung und Bonus, verdoppelt sich die Summe bei einem 100-%-Bonus.</p>
+        </details>
+        <details>
+          <summary>Sind Online-Casinos in Deutschland legal?</summary>
+          <p>Ja, seit dem Glücksspielstaatsvertrag 2021 dürfen Anbieter mit Erlaubnis der GGL virtuelle Automatenspiele anbieten. Ob ein Anbieter zugelassen ist, siehst du auf der amtlichen Whitelist der GGL.</p>
+        </details>
+        <details>
+          <summary>Warum ist der Einsatz auf 1 € begrenzt?</summary>
+          <p>Der Glücksspielstaatsvertrag schreibt für virtuelle Automatenspiele einen Höchsteinsatz von 1 € pro Spin und eine Mindestspieldauer von 5 Sekunden vor. Das gilt für alle lizenzierten Anbieter gleich.</p>
+        </details>
+        <details>
+          <summary>Wie hoch darf ich einzahlen?</summary>
+          <p>Standardmäßig gilt ein anbieterübergreifendes Einzahlungslimit von 1.000 € pro Monat. Es wird zentral in der Limitdatei überwacht, unabhängig davon, bei wie vielen Casinos du spielst.</p>
+        </details>
+        <details>
+          <summary>Verdient ihr an meiner Anmeldung?</summary>
+          <p>Ja. Wenn du dich über einen unserer Links anmeldest, zahlt uns der Anbieter eine Provision. Für dich ändert sich am Bonus nichts. Die Reihenfolge im Vergleich richtet sich nach unserer Wertung.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPIELERSCHUTZ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="care">
+        <div>
+          <h2>Spiel mit Limit</h2>
+          <p>Glücksspiel kann süchtig machen. Setz dir vorher ein Budget und spiel nur mit Geld, dessen Verlust dich nicht belastet. Teilnahme ab 18 Jahren.</p>
+        </div>
+        <div class="care-help">
+          <span>Kostenlose und anonyme Beratung</span>
+          <strong class="tel">0800 1 37 27 00</strong>
+          <span>Beratungstelefon zur Glücksspielsucht, <a href="https://www.check-dein-spiel.de" target="_blank" rel="noopener">check-dein-spiel.de</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <div>
+      <span class="brand-name">Bonusnacht</span>
+      <p>Unabhängiges Vergleichsportal. Alle Angaben ohne Gewähr, maßgeblich sind die AGB der Anbieter. Stand: <span data-site="stand"></span>.</p>
+    </div>
+    <nav class="foot-links" aria-label="Rechtliches">
+      <a id="l-impressum" href="#impressum">Impressum</a>
+      <a id="l-datenschutz" href="#datenschutz">Datenschutz</a>
+      <a href="https://www.gluecksspiel-behoerde.de" target="_blank" rel="noopener">GGL-Whitelist</a>
+    </nav>
+  </div>
+</footer>
+
+<a class="sticky-cta" id="sticky-cta" href="#" target="_blank" rel="sponsored nofollow noopener" hidden>
+  <span class="sticky-text"><b id="sticky-name"></b><span id="sticky-bonus"></span></span>
+  <span class="sticky-go">Bonus holen</span>
+</a>
+
+<script src="data/casinos.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
